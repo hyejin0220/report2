@@ -39,10 +39,9 @@ class SimpleChatBot:
                     matrix[i-1][j-1] + cost # 문자 변경: 대각선에서 +1, 문자가 동일하면 대각선 숫자 복사
                 ])
         return matrix[a_len][b_len]
-        
+            
     def find_best_answer(self, input_sentence):
-        input_vector = self.vectorizer.transform([input_sentence])
-        similarities = self.calc_distance()
+        similarities = self.calc_distance(self.questions,input_sentence)
         best_match_index = similarities.argmax()   # 유사도 값이 가장 큰 값의 인덱스를 반환
         return self.answers[best_match_index]
 
